@@ -7,10 +7,16 @@
 ### Stripe is a Vapor helper to use [StripeKit](https://github.com/vapor-community/stripe-kit)
 
 ## Usage guide
-In your `Package.swift` file, add the following
+In your `Package.swift` file, add the following to the `dependencies` section:
 
 ~~~~swift
-.package(url: "https://github.com/vapor-community/stripe.git", from: "8.0.0")
+.package(url: "https://github.com/vapor-community/stripe.git", from: "11.0.0")
+~~~~
+
+Also add this to the target dependencies:
+
+~~~~swift
+.product(name: "Stripe", package: "stripe")
 ~~~~
 
 
@@ -21,6 +27,7 @@ export STRIPE_API_KEY="sk_123456"
 
 Now you can access a `StripeClient` via `Request`.
 ~~~~swift
+import Stripe
 
 struct ChargeToken: Content {
     var token: String
